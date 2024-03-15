@@ -1,24 +1,24 @@
 import { GraphQLID, GraphQLList } from "graphql";
 import { BaseGeneralType } from "../typeDefs/BaseGeneralType";
-import { GeneralMedicineEntity } from "../../entities/GeneralMedicine.entity";
+import { PsychiatryEntity } from "../../entities/Psychiatry.entity";
 import connectDB from "../db";
 
-const generalMedicineSource = connectDB.getRepository(GeneralMedicineEntity)
+const psychiatrySource = connectDB.getRepository(PsychiatryEntity)
 
-export const GET_ALL_GENERAL_MEDICINE_REQUEST = {
+export const GET_ALL_PSYCHIATRY_REQUEST = {
   type: new GraphQLList(BaseGeneralType),
   async resolve() {
-    return await generalMedicineSource.find()
+    return await psychiatrySource.find()
   }
 }
 
-export const GET_ONE_GENERAL_MEDICINE_REQUEST = {
+export const GET_ONE_PSYCHIATRY_REQUEST = {
   type: new GraphQLList(BaseGeneralType),
   args: {
     id: { type: GraphQLID }
   },
   async resolve(_: any, { id }: any ) {
-    return await generalMedicineSource.findOne({
+    return await psychiatrySource.findOne({
       where: {
         id
       }

@@ -6,12 +6,12 @@ import {
 } from "graphql";
 import { BaseGeneralType } from "../typeDefs/BaseGeneralType";
 import { BaseGeneralIT } from "../../types";
-import { GeneralMedicineEntity } from "../../entities/GeneralMedicine.entity";
+import { OptometryEntity } from "../../entities/Optometry.entity";
 import connectDB from "../db";
 
-const generalMedicineSource = connectDB.getRepository(GeneralMedicineEntity);
+const optometrySource = connectDB.getRepository(OptometryEntity);
 
-export const CREATE_GENERAL_MEDICINE_REQUEST = {
+export const CREATE_OPTOMETRY_REQUEST = {
   type: BaseGeneralType,
   args: {
     typeService: { type: GraphQLString },
@@ -47,19 +47,19 @@ export const CREATE_GENERAL_MEDICINE_REQUEST = {
       status:args.status,
     };
 
-    const sendData = await generalMedicineSource.insert(result)
+    const sendData = await optometrySource.insert(result)
 
     return { id: sendData.identifiers[0].id, ...result };
   },
 };
 
-export const UPDATE_GENERAL_MEDICINE_REQUEST = {
+export const UPDATE_OPTOMETRY_REQUEST = {
   type: BaseGeneralType,
   args: {
     id: { type: GraphQLString },
     input: {
       type: new GraphQLInputObjectType({
-        name: "GeneralMedicineInput",
+        name: "OptometryInput",
         fields: {
           typeService: { type: GraphQLString },
           registryNumber: { type: GraphQLInt },
@@ -80,7 +80,7 @@ export const UPDATE_GENERAL_MEDICINE_REQUEST = {
   },
 
   async resolve(_: any, { id, input }) {
-    const findRequest = await generalMedicineSource.findOne({
+    const findRequest = await optometrySource.findOne({
       where: { id },
     });
 
@@ -88,7 +88,7 @@ export const UPDATE_GENERAL_MEDICINE_REQUEST = {
       return "Id is required";
     } else {
       if (!!findRequest) {
-        const response = await generalMedicineSource.update(
+        const response = await optometrySource.update(
           { id },
           {
             ...input,
@@ -103,13 +103,13 @@ export const UPDATE_GENERAL_MEDICINE_REQUEST = {
   },
 };
 
-export const DELETE_GENERAL_MEDICINE_REQUEST = {
+export const DELETE_OPTOMETRY_REQUEST = {
   type: GraphQLString,
   args: {
     id: { type: GraphQLID },
   },
   async resolve(_: any, { id }) {
-    await generalMedicineSource.delete(id);
+    await optometrySource.delete(id);
     return `Request with id: ${id} deleted succesfully.`;
   },
 };

@@ -1,7 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
-@Entity({ name: "GENERAL_MEDICINE", synchronize: false })
-export class GeneralMedicineEntity {
+@Entity({ name: "GYNECOLOGY", synchronize: false })
+export class GynecologyEntity {
   @PrimaryGeneratedColumn()
   id: string;
 

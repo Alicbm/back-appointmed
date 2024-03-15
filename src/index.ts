@@ -2,12 +2,17 @@ import express from "express"; // yarn add express
 import { createHandler } from "graphql-http/lib/use/express";
 import { schema } from "./schema";
 import connectDB from "./schema/db";
+import cors from 'cors'
+
 const expressPlayground =
   require("graphql-playground-middleware-express").default;
 
 const app = express();
 
+
 connectDB
+
+app.use(cors())
 
 app.all("/graphql", createHandler({ schema }));
 app.get("/playground", expressPlayground({ endpoint: "/graphql" }));

@@ -1,6 +1,10 @@
 import { DataSource } from "typeorm";
 import { GeneralMedicineEntity } from "../entities/GeneralMedicine.entity";
-import { User } from "../entities/User";
+import { GynecologyEntity } from "../entities/Gynecology.entity";
+import { OdontologyEntity } from "../entities/Odontology.entity";
+import { OptometryEntity } from "../entities/Optometry.entity";
+import { PediatricsEntity } from "../entities/Pediatrics.entity";
+import { PsychiatryEntity } from "../entities/Psychiatry.entity";
 
 const connectDB = new DataSource({
   type: "mysql",
@@ -10,7 +14,14 @@ const connectDB = new DataSource({
   password: "admin",
   database: "appointmed",
   synchronize: true,
-  entities: [User, GeneralMedicineEntity],
+  entities: [
+    GeneralMedicineEntity,
+    GynecologyEntity,
+    OdontologyEntity,
+    OptometryEntity,
+    PediatricsEntity,
+    PsychiatryEntity,
+  ],
   // logging: false,
   // subscribers: [],
   // migrations: [],
