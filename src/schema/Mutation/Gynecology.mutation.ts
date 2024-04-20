@@ -27,7 +27,6 @@ export const CREATE_GYNECOLOGY_REQUEST = {
     hour: { type: GraphQLString },
     doctor: { type: GraphQLString },
     patientStatus: { type: GraphQLString },
-    status: { type: GraphQLString },
   },
   async resolve(_: any, args: BaseGeneralIT) {
     const result = {
@@ -44,7 +43,7 @@ export const CREATE_GYNECOLOGY_REQUEST = {
       hour: args.hour,
       doctor:args.doctor,
       patientStatus:args.patientStatus,
-      status:args.status,
+      status: 'Proceso',
     };
 
     const sendData = await gynecologySource.insert(result)
@@ -63,17 +62,17 @@ export const UPDATE_GYNECOLOGY_REQUEST = {
         fields: {
           typeService: { type: GraphQLString },
           registryNumber: { type: GraphQLInt },
-          firsName: { type: GraphQLString },
+          firstName: { type: GraphQLString },
           lastName: { type: GraphQLString },
           email: { type: GraphQLString },
           eps: { type: GraphQLString },
-          departament: { type: GraphQLString },
+          department: { type: GraphQLString },
           city: { type: GraphQLString },
           medicalCenter: { type: GraphQLString },
           date: { type: GraphQLString },
           hour: { type: GraphQLString },
           doctor: { type: GraphQLString },
-          fileNumber: { type: GraphQLInt },
+          patientStatus: { type: GraphQLString },
         },
       }),
     },

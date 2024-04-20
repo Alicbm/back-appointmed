@@ -53,10 +53,19 @@ import {
   UPDATE_OPTOMETRY_REQUEST,
   DELETE_OPTOMETRY_REQUEST,
 } from "./Mutation/Optometry.mutation";
+import { GET_ALL_USER, GET_ONE_USER } from "./Queries/User.query";
+import {
+  CREATE_USER,
+  UPDATE_USER,
+  DELETE_USER,
+} from "./Mutation/User.mutation";
+import { LOGIN } from "./Mutation/Auth.mutation";
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQuery",
   fields: {
+    getAllUsers: GET_ALL_USER,
+    getOneUsers: GET_ONE_USER,
     getAllGeneralMedicineRequest: GET_ALL_GENERAL_MEDICINE_REQUEST,
     getOneGeneralMedicineRequest: GET_ONE_GENERAL_MEDICINE_REQUEST,
     getAllOdontologyRequest: GET_ALL_ODONTOLOGY_REQUEST,
@@ -75,6 +84,10 @@ const RootQuery = new GraphQLObjectType({
 const Mutation = new GraphQLObjectType({
   name: "Mutation",
   fields: {
+    login: LOGIN,
+    createUser: CREATE_USER,
+    updateteUser: UPDATE_USER,
+    deleteUser: DELETE_USER,
     createGeneralMedicineRequest: CREATE_GENERAL_MEDICINE_REQUEST,
     updateGeneralMedicineRequest: UPDATE_GENERAL_MEDICINE_REQUEST,
     deleteGeneralMedicineRequest: DELETE_GENERAL_MEDICINE_REQUEST,

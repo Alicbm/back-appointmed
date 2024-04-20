@@ -15,3 +15,18 @@ export interface BaseGeneralIT {
   patientStatus: string;
   status: string;
 }
+
+export interface UserIT {
+  name: string;
+  email: string;
+  password: string;
+  createdAt: string;
+  role: string;
+}
+
+export interface Login {
+  email: string;
+  password: string;
+  accessToken: string;
+  user: UserIT;
+}

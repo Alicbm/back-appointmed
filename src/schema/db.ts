@@ -5,6 +5,7 @@ import { OdontologyEntity } from "../entities/Odontology.entity";
 import { OptometryEntity } from "../entities/Optometry.entity";
 import { PediatricsEntity } from "../entities/Pediatrics.entity";
 import { PsychiatryEntity } from "../entities/Psychiatry.entity";
+import { UserEntity } from "../entities/User.entity";
 
 const connectDB = new DataSource({
   type: "mysql",
@@ -21,6 +22,7 @@ const connectDB = new DataSource({
     OptometryEntity,
     PediatricsEntity,
     PsychiatryEntity,
+    UserEntity
   ],
   // logging: false,
   // subscribers: [],
